@@ -64,7 +64,7 @@ The project is divided into two main phases: **Data Engineering (Phase 1)** and 
 |---------------|-------------|
 | `Version1(phase1.2).ipynb` | Connect to MongoDB, explore collections, export data to CSV. |
 | `Version1(phase1.3).ipynb` | Inject pre-processed CSV data into PostgreSQL. |
-| `Version1(phase2.2) copy.ipynb` | Demonstrates the RAG build process, including creating embeddings. |
+| `Version1(phase2.2).ipynb` | Demonstrates the RAG build process, including creating embeddings. |
 | `working_app_v3.py` | Main Streamlit application providing the user interface for the RAG-based QA system. |
 | `faiss_movie_index/` | Directory containing the FAISS vector store files. |
 | `.env` | API keys and database credentials. |
@@ -75,5 +75,46 @@ The project is divided into two main phases: **Data Engineering (Phase 1)** and 
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/Aravind-M2/Mflix-Movie-chat-bot---RAG-Architecture-.git>
 cd <your-project-folder>
+
+## 2. Set up the Databases
+
+- Ensure you have a **MongoDB Atlas** account with the `sample_mflix` dataset loaded.  
+- Set up a local **PostgreSQL** database.  
+
+Create a `.env` file in the project root with your credentials:
+
+```env
+OPENAI_API_KEY="your_openai_api_key"
+DB_USER="postgres"
+DB_PASSWORD="your_db_password"
+DB_HOST="localhost"
+DB_PORT="5432"
+DB_NAME="mflix"
+
+## 3. install the required packages with
+
+pip install -r requirements.txt
+
+## 4. Run the ETL Process
+
+Execute the Jupyter notebooks Version1(phase1.2).ipynb and Version1(phase1.3).ipynb in order to migrate the data from MongoDB to your PostgreSQL database.
+
+## 5. Create the FAISS Index
+
+Run the script/notebook that creates the FAISS vector store ( Version1(phase2.2).ipynb)
+This will generate the faiss_movie_index directory.
+
+## 6. Run the Application
+streamlit run working_app_v3.py
+
+**### Usage**
+
+Once the Streamlit application is running, you can interact with the chat interface to ask questions about the movies in the dataset.
+
+The system will classify your query and provide a response based on either:
+
+Structured database lookup (SQL)
+
+Semantic search using the RAG model (FAISS + LLM)
