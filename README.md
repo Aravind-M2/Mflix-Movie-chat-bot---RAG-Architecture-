@@ -77,6 +77,7 @@ The project is divided into two main phases: **Data Engineering (Phase 1)** and 
 ```bash
 git clone <https://github.com/Aravind-M2/Mflix-Movie-chat-bot---RAG-Architecture-.git>
 cd <your-project-folder>
+```
 
 ## 2. Set up the Databases
 
@@ -92,6 +93,7 @@ DB_PASSWORD="your_db_password"
 DB_HOST="localhost"
 DB_PORT="5432"
 DB_NAME="mflix"
+```
 
 ## 3. install the required packages with
 
@@ -107,7 +109,7 @@ Run the script/notebook that creates the FAISS vector store ( Version1(phase2.2)
 This will generate the faiss_movie_index directory.
 
 ## 6. Run the Application
-streamlit run working_app_v3.py
+```streamlit run working_app_v3.py```
 
 **### Usage**
 
